@@ -1,8 +1,8 @@
-const { CleanWebpackPlugin } = require('cleanwebpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './app.js',
+  entry: './js/app.js',
   output: {
     path: path.resolve(__dirname, 'builds'),
     filename: 'bundle.js'

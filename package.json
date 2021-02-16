@@ -2,22 +2,26 @@
   "name": "Dino",
   "version": "1",
   "description": "Udacity Dino project",
-  "main": "index.js",
-  "repository": "https://github.com/udacity/Javascript.git",
+  "main": "index.html",
+  "repository": "https://github.com/wongalfonso/dinographic.git",
   "author": "alfonsowongsd@gmail.com",
   "license": "MIT",
   "scripts": {
-    "build" : "webpack build",
-    "watch" : "webpack --w"
+    "build": "webpack build",
+    "watch": "webpack --w"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
     "jquery": "^3.5.1",
     "webpack": "^5.16.0"
   },
   "devDependencies": {
-    "eslint": "^7.18.0"
+    "eslint": "^7.18.0",
+    "webpack-cli": "^4.5.0"
   }
 }

@@ -1,12 +1,10 @@
 
     // Create Dino Constructor
-  class Dino {
-    constructor() {
-      console.log('yes');
-    }
+  function Dino() {
+    
   }
 
-  export default Dino;
+
     
 
     // Create Dino Objects
