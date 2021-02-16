@@ -1,22 +1,25 @@
 import $ from 'jquery';
+import Dino from './Dino.js';
+const dino = new Dino();
 
 
-function Form() {
+(function() {
 
-  console.log('running');
-  this.name = $('#name');
-  this.feet = $('#feet');
-  this.inches = $('#inches');
-  this.weight = $('#weight');
-  this.diet = $('#diet');
-  this.submit = $('#btn');
-  this.submit.on('click', (e) => onSubmit(e));
+  let submit = $('#btn');
+  submit.on('click', (e) => onSubmit(e));
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(this.name, this.feet, this.inches, this.weight, this.diet);
 
-  }
-}
+    let obj = new Object();
+    obj.name = $('#name').val();
+    obj.feet = $('#feet').val();
+    obj.inches = $('#inches').val();
+    obj.weight = $('#weight').val();
+    obj.diet = $('#diet').val();
 
-export default Form;
+    dino(obj);
+    $('#dino-compare').hide();
+    $('#grid').show();
+  };
+})();

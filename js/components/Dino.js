@@ -1,12 +1,12 @@
 
     // Create Dino Constructor
-  function Dino() {
+  function Dino(human) {
     
   }
 
 
     
-
+  export default Dino;
     // Create Dino Objects
 
 

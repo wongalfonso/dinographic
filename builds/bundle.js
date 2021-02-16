@@ -12,16 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Dino_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Dino.js */ "./js/components/Dino.js");
-/* harmony import */ var _components_Dino_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_Dino_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Form_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Form.js */ "./js/components/Form.js");
 
 
+ // const dino = new Dino();
 
-var dino = new (_components_Dino_js__WEBPACK_IMPORTED_MODULE_1___default())();
-var form = new _components_Form_js__WEBPACK_IMPORTED_MODULE_2__.default();
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  dino();
-  form();
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {// dino();
 });
 
 /***/ }),
@@ -30,10 +26,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 /*!*******************************!*\
   !*** ./js/components/Dino.js ***!
   \*******************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
 // Create Dino Constructor
-function Dino() {} // Create Dino Objects
+function Dino(human) {}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dino); // Create Dino Objects
 // Create Human Object
 // Use IIFE to get human data from form
 // Create Dino Compare Method 1
@@ -57,32 +60,34 @@ function Dino() {} // Create Dino Objects
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Dino_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dino.js */ "./js/components/Dino.js");
 
 
-function Form() {
-  console.log('running');
-  this.name = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#name');
-  this.feet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#feet');
-  this.inches = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inches');
-  this.weight = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#weight');
-  this.diet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#diet');
-  this.submit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#btn');
-  this.submit.on('click', function (e) {
+var dino = new _Dino_js__WEBPACK_IMPORTED_MODULE_1__.default();
+
+(function () {
+  var submit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#btn');
+  submit.on('click', function (e) {
     return onSubmit(e);
   });
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log(this.name, this.feet, this.inches, this.weight, this.diet);
+    var obj = new Object();
+    obj.name = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#name').val();
+    obj.feet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#feet').val();
+    obj.inches = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inches').val();
+    obj.weight = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#weight').val();
+    obj.diet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#diet').val();
+    dino(obj);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#dino-compare').hide();
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#grid').show();
   }
-}
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
+  ;
+})();
 
 /***/ }),
 
