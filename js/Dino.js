@@ -1,38 +1,37 @@
 import $ from 'jquery';
 import DinosData from '../dino.json';
 
+
+
+// Use IIFE to get human data from form
+
+(function () {
+
+    let submit = $('#btn');
+    submit.on('click', (e) => onSubmit(e));
+
+    function onSubmit(e) {
+        e.preventDefault();
+
+        let obj = new Object();
+        obj.species = $('#name').val();
+        obj.height = Number($('#inches').val()) + (Number($('#feet').val()) * 12);
+        obj.weight = Number($('#weight').val());
+        obj.diet = $('#diet').val();
+
+        new Dino(obj);
+
+        // Remove form from screen
+        $('#dino-compare').hide();
+
+        // On button click, prepare and display infographic
+        $('#grid').show();
+    };
+})();
+
 // Create Dino Constructor
 
 function Dino(human) {
-
-    // Use IIFE to get human data from form
-
-    (function () {
-
-        let submit = $('#btn');
-        submit.on('click', (e) => onSubmit(e));
-
-        function onSubmit(e) {
-            e.preventDefault();
-
-            let obj = new Object();
-            obj.species = $('#name').val();
-            obj.height = Number($('#inches').val()) + (Number($('#feet').val()) * 12);
-            obj.weight = Number($('#weight').val());
-            obj.diet = $('#diet').val();
-
-            const dino = new Dino(obj);
-
-            // Remove form from screen
-            $('#dino-compare').hide();
-
-            // On button click, prepare and display infographic
-            $('#grid').show();
-        };
-    })();
-
-
-
 
 
     // Create Dino Objects
@@ -52,13 +51,10 @@ function Dino(human) {
     this.randomSelect = function (res) {
 
         let random = Math.floor(Math.random() * 3) + 1;
-        switch (res.species, res.type, random) {
-            case res.species === 'Pigeon': {
-                return res.fact;
-            }
-            case res.type === 'Human': {
-                return res.diet;
-            }
+        if (res.species === 'Pigeon') {
+            return res.fact;
+        } 
+        switch (random) {
             case 1: {
                 return this.method1(res);
             }
@@ -102,7 +98,7 @@ function Dino(human) {
           <div class = 'grid-item'>
             <h3>${result.species}</h3>
             <img src = "./images/${result && result.type === 'Human' ? 'human' : result.species.toLowerCase()}.png"/>
-            <p>${this.randomSelect(result)}</p>
+            <p>${results && result.type === 'Human' ? result.diet : this.randomSelect(result)}</p>
           </div>`
         ).join('')}
         </div>
@@ -112,5 +108,3 @@ function Dino(human) {
     this.mountTiles(this.results);
 
 }
-
-export default Dino;
