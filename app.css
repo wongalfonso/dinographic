@@ -45,6 +45,13 @@ p {
     flex-wrap: wrap;
 }
 
+#grid .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+
 .grid-item {
     position: relative;
     box-sizing: border-box;

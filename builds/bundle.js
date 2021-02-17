@@ -1,31 +1,21 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/app.js":
+/***/ "./dino.json":
 /*!*******************!*\
-  !*** ./js/app.js ***!
+  !*** ./dino.json ***!
   \*******************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module) => {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Dino_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Dino.js */ "./js/components/Dino.js");
-/* harmony import */ var _components_Form_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Form.js */ "./js/components/Form.js");
-
-
- // const dino = new Dino();
-
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {// dino();
-});
+module.exports = JSON.parse("{\"Dinos\":[{\"species\":\"Triceratops\",\"weight\":13000,\"height\":114,\"diet\":\"herbavor\",\"where\":\"North America\",\"when\":\"Late Cretaceous\",\"fact\":\"First discovered in 1889 by Othniel Charles Marsh\"},{\"species\":\"Tyrannosaurus Rex\",\"weight\":11905,\"height\":144,\"diet\":\"carnivor\",\"where\":\"North America\",\"when\":\"Late Cretaceous\",\"fact\":\"The largest known skull measures in at 5 feet long.\"},{\"species\":\"Anklyosaurus\",\"weight\":10500,\"height\":55,\"diet\":\"herbavor\",\"where\":\"North America\",\"when\":\"Late Cretaceous\",\"fact\":\"Anklyosaurus survived for approximately 135 million years.\"},{\"species\":\"Brachiosaurus\",\"weight\":70000,\"height\":\"372\",\"diet\":\"herbavor\",\"where\":\"North America\",\"when\":\"Late Jurasic\",\"fact\":\"An asteroid was named 9954 Brachiosaurus in 1991.\"},{\"species\":\"Stegosaurus\",\"weight\":11600,\"height\":79,\"diet\":\"herbavor\",\"where\":\"North America, Europe, Asia\",\"when\":\"Late Jurasic to Early Cretaceous\",\"fact\":\"The Stegosaurus had between 17 and 22 seperate places and flat spines.\"},{\"species\":\"Elasmosaurus\",\"weight\":16000,\"height\":59,\"diet\":\"carnivor\",\"where\":\"North America\",\"when\":\"Late Cretaceous\",\"fact\":\"Elasmosaurus was a marine reptile first discovered in Kansas.\"},{\"species\":\"Pteranodon\",\"weight\":44,\"height\":20,\"diet\":\"carnivor\",\"where\":\"North America\",\"when\":\"Late Cretaceous\",\"fact\":\"Actually a flying reptile, the Pteranodon is not a dinosaur.\"},{\"species\":\"Pigeon\",\"weight\":0.5,\"height\":9,\"diet\":\"herbavor\",\"where\":\"World Wide\",\"when\":\"Holocene\",\"fact\":\"All birds are living dinosaurs.\"}]}");
 
 /***/ }),
 
-/***/ "./js/components/Dino.js":
-/*!*******************************!*\
-  !*** ./js/components/Dino.js ***!
-  \*******************************/
+/***/ "./js/Dino.js":
+/*!********************!*\
+  !*** ./js/Dino.js ***!
+  \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33,61 +23,114 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-// Create Dino Constructor
-function Dino(human) {}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dino); // Create Dino Objects
-// Create Human Object
-// Use IIFE to get human data from form
-// Create Dino Compare Method 1
-// NOTE: Weight in JSON file is in lbs, height in inches. 
-// Create Dino Compare Method 2
-// NOTE: Weight in JSON file is in lbs, height in inches.
-// Create Dino Compare Method 3
-// NOTE: Weight in JSON file is in lbs, height in inches.
-// Generate Tiles for each Dino in Array
-// Add tiles to DOM
-// Remove form from screen
-// On button click, prepare and display infographic
-
-/***/ }),
-
-/***/ "./js/components/Form.js":
-/*!*******************************!*\
-  !*** ./js/components/Form.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Dino_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dino.js */ "./js/components/Dino.js");
+/* harmony import */ var _dino_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dino.json */ "./dino.json");
+
+ // Create Dino Constructor
+
+function Dino(human) {
+  // Use IIFE to get human data from form
+  (function () {
+    var submit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#btn');
+    submit.on('click', function (e) {
+      return onSubmit(e);
+    });
+
+    function onSubmit(e) {
+      e.preventDefault();
+      var obj = new Object();
+      obj.species = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#name').val();
+      obj.height = Number(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inches').val()) + Number(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#feet').val()) * 12;
+      obj.weight = Number(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#weight').val());
+      obj.diet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#diet').val();
+      var dino = new Dino(obj); // Remove form from screen
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#dino-compare').hide(); // On button click, prepare and display infographic
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#grid').show();
+    }
+
+    ;
+  })(); // Create Dino Objects
 
 
-var dino = new _Dino_js__WEBPACK_IMPORTED_MODULE_1__.default();
+  var dinoObject = _dino_json__WEBPACK_IMPORTED_MODULE_1__.Dinos; // Create Human Object
 
-(function () {
-  var submit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#btn');
-  submit.on('click', function (e) {
-    return onSubmit(e);
-  });
+  this.humanObject = human;
+  this.humanObject.where = 'World Wide';
+  this.humanObject.when = 'Current';
+  this.humanObject.type = 'Human';
+  this.results = dinoObject.slice();
+  this.results.splice(4, 0, this.humanObject); // NOTE: Weight in JSON file is in lbs, height in inches. 
 
-  function onSubmit(e) {
-    e.preventDefault();
-    var obj = new Object();
-    obj.name = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#name').val();
-    obj.feet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#feet').val();
-    obj.inches = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#inches').val();
-    obj.weight = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#weight').val();
-    obj.diet = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#diet').val();
-    dino(obj);
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#dino-compare').hide();
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#grid').show();
-  }
+  this.randomSelect = function (res) {
+    var random = Math.floor(Math.random() * 3) + 1;
 
-  ;
-})();
+    switch (res.species, res.type, random) {
+      case res.species === 'Pigeon':
+        {
+          return res.fact;
+        }
+
+      case res.type === 'Human':
+        {
+          return res.diet;
+        }
+
+      case 1:
+        {
+          return this.method1(res);
+        }
+
+      case 2:
+        {
+          return this.method2(res);
+        }
+
+      case 3:
+        {
+          return this.method3(res);
+        }
+
+      default:
+        {
+          return res.fact;
+        }
+    }
+  }; // Create Dino Compare Method 1
+
+
+  this.method1 = function (res) {
+    return "".concat(res.species, " weights ").concat(Number(res.weight) - this.humanObject.weight, " lbs more than you.");
+  }; // Create Dino Compare Method 2
+  // NOTE: Weight in JSON file is in lbs, height in inches.
+
+
+  this.method2 = function (res) {
+    return "".concat(res.species, " is ").concat(Number(res.height) * 12 - this.humanObject.height, " inches taller than you.");
+  }; // Create Dino Compare Method 3
+  // NOTE: Weight in JSON file is in lbs, height in inches.
+
+
+  this.method3 = function (res) {
+    return "".concat(res.species, " would live in ").concat(res.where);
+  }; // Generate Tiles for each Dino in Array
+  // Add tiles to DOM
+
+
+  this.mountTiles = function (results) {
+    var _this = this;
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#grid').html("\n        <div class = 'grid-container'>".concat(results.map(function (result) {
+      return "\n          <div class = 'grid-item'>\n            <h3>".concat(result.species, "</h3>\n            <img src = \"./images/").concat(result && result.type === 'Human' ? 'human' : result.species.toLowerCase(), ".png\"/>\n            <p>").concat(_this.randomSelect(result), "</p>\n          </div>");
+    }).join(''), "\n        </div>\n      "));
+  };
+
+  this.mountTiles(this.results);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dino);
 
 /***/ }),
 
@@ -11043,7 +11086,7 @@ return jQuery;
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module
-/******/ 	__webpack_require__("./js/app.js");
+/******/ 	__webpack_require__("./js/Dino.js");
 /******/ 	// This entry module used 'exports' so it can't be inlined
 /******/ })()
 ;
