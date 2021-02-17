@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack build",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "lint": "eslint ./js/Dino.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
