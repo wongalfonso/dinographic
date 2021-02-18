@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'builds'),
     filename: 'bundle.js'
   },
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
   
   module: {

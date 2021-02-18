@@ -1,12 +1,13 @@
 # Object Oriented Javascript 
 
-## Start
+## Getting Started
 
-- download file from github.
-- yarn install
+1. Download file from github.
+2. yarn install
   - install packages listed in package.json
-- yarn build 
+3. yarn build 
   - build js file needed for project.
+4. builds folder is created and will contain bundled version of Dino.js folder
 
 ### Packages
 
