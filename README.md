@@ -1,5 +1,13 @@
 # Object Oriented Javascript 
 
+## Start
+
+- download file from github.
+- yarn install
+  - install packages listed in package.json
+- yarn build 
+  - build js file needed for project.
+
 ## Student Instructions
 
 ### Big Picture
